@@ -1,0 +1,16 @@
+products => GET http://localhost/electroshop/api/products
+product => GET http://localhost/electroshop/api/product/:product
+product_by_category => GET http://localhost/electroshop/api/category/:name
+product_by_search => POST http://localhost/electroshop/api/products/search
+rating => POST http:c//localhost/electroshop/api/product/:product/rate
+categories => POST http://localhost/electroshop/api/categories
+register => POST http://localhost/electroshop/api/auth/register
+login => POST http://localhost/electroshop/api/auth/login
+getMe => GET http://localhost/electroshop/api/getMe
+checkout => POST http://localhost/electroshop/api/checkout {
+  ':number'
+  ':region'
+  ':address'
+  ':product_id'
+  ':total'
+}
