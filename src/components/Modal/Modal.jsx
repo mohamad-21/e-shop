@@ -10,7 +10,7 @@ function Modal({children, close = false, mode=''}) {
   }, [close]);
 
   return (
-    <div className={`fixed inset-0 bg-black/60 text-white items-center justify-center z-20 ${showModal ? 'flex' : 'hidden'}`}>
+    <div className={`fixed inset-0 bg-black/60 text-white items-center justify-center z-20 px-5 ${showModal ? 'flex' : 'hidden'}`}>
       <ModalBody mode={mode}>
         {children}
       </ModalBody>

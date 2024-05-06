@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import AppContext from "../contexts/AppContext"
 import User from "../contexts/User";
 
-const cart_ADD_API = 'https://melectroshop.000webhostapp.com/api/cart/add/';
+const cart_ADD_API = 'https://electroshop.liara.run/api/cart/add/';
 
 function useAddCart() {
   

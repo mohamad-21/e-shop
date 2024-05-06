@@ -39,12 +39,12 @@ function Sidebar() {
       <ul className="flex items-center justify-center flex-col gap-7">
         <li><NavLink to="#" className="hover:opacity-75 transition text-lg" onClick={handleClick}>Home</NavLink></li>
         <li className="relative group cursor-pointer">
-          <div className='flex items-center gap-0.5 group-hover:pb-3' onClick={handleClick}>Category <IoIosArrowDown className="group-hover:rotate-180 transition duration-300" />
+          <div className='flex items-center gap-0.5 group-hover:pb-3'>Category <IoIosArrowDown className="group-hover:rotate-180 transition duration-300" />
             <ul className="absolute top-full left-0 bg-darkblue pb-3 w-[170px] rounded-b-lg translate-y-5 opacity-0 pointer-events-none transition group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto duration-300 z-10">
-              <li><NavLink to="/category/laptop" className="py-2 px-4 w-full hover:bg-blue-500 transition flex items-center gap-3"><MdLaptop size={18} />Laptop</NavLink></li>
-              <li><NavLink to="/category/smartphone" className="py-2 px-4 w-full hover:bg-blue-500 transition flex items-center gap-3"><BiMobileAlt size={18} /> Smartphone</NavLink></li>
-              <li><NavLink to="/category/camera" className="py-2 px-4 w-full hover:bg-blue-500 transition flex items-center gap-3"><MdCameraAlt size={18} />Camera</NavLink></li>
-              <li><NavLink to="/category/headphone" className="py-2 px-4 w-full hover:bg-blue-500 transition flex items-center gap-3"><FaHeadphonesSimple size={18} />Headphone</NavLink></li>
+              <li><NavLink to="/category/laptop" onClick={handleClick} className="py-2 px-4 w-full hover:bg-blue-500 transition flex items-center gap-3"><MdLaptop size={18} />Laptop</NavLink></li>
+              <li><NavLink to="/category/smartphone" onClick={handleClick} className="py-2 px-4 w-full hover:bg-blue-500 transition flex items-center gap-3"><BiMobileAlt size={18} /> Smartphone</NavLink></li>
+              <li><NavLink to="/category/camera" onClick={handleClick} className="py-2 px-4 w-full hover:bg-blue-500 transition flex items-center gap-3"><MdCameraAlt size={18} />Camera</NavLink></li>
+              <li><NavLink to="/category/headphone" onClick={handleClick} className="py-2 px-4 w-full hover:bg-blue-500 transition flex items-center gap-3"><FaHeadphonesSimple size={18} />Headphone</NavLink></li>
             </ul>
           </div>
         </li>
