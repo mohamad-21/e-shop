@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Input from "../components/Form/Input";
 import Label from "../components/Form/Label";
 import Modal from "../components/Modal/Modal"
@@ -8,7 +8,6 @@ import { FilledButton } from "../components/Modal/ModalButton"
 import User from "../contexts/User";
 import { Link, useNavigate } from "react-router-dom";
 import Submit from "../components/Form/Submit";
-import axios from "axios";
 
 const login_API = 'https://electroshop.liara.run/api/auth/login';
 
