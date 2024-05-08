@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import Index from "./pages/Index"
 import Product from "./pages/Product"
 import Shop from "./pages/Shop"
@@ -22,22 +22,19 @@ function App() {
     <div className="min-h-screen flex flex-col text-darkblue">
       {showOverlay && <Overlay />}
       {message && <Alert open={message} setOpen={setMessage}>{message}</Alert>}
-      
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/product/:id" element={<Product />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/category/:category" element={<Category />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="*" element={<h1>Not Found</h1>} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/category/:category" element={<Category />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="*" element={<h1>Not Found</h1>} />
+      </Routes>
     </div>
   )
 
