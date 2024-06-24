@@ -9,8 +9,8 @@ import CartItem from "../components/ProductCard/CartItem"
 import { Link } from "react-router-dom"
 import SuccessAlert from "../components/SuccessAlert"
 
-const cart_remove_api = 'https://electroshop.liara.run/api/cart/remove/';
-const cart_clear_api = 'https://electroshop.liara.run/api/cart/clear';
+const cart_remove_api = 'https://mohamad21.ir/electroshop/api/cart/remove/';
+const cart_clear_api = 'https://mohamad21.ir/electroshop/api/cart/clear';
 
 function Cart() {
 
@@ -21,7 +21,7 @@ function Cart() {
   const user = useContext(User);
 
   useEffect(() => {
-    setResultText(cart.length ? 'Your cart items': 'Your cart is clear...');
+    setResultText(cart.length ? 'Your cart items' : 'Your cart is clear...');
   }, [cart]);
 
 
@@ -32,7 +32,7 @@ function Cart() {
         "Authorization": `Bearer ${user.token}`
       },
     });
-    if(resp.ok) {
+    if (resp.ok) {
       getCart();
       setAddedToCart(true);
     }
@@ -47,15 +47,15 @@ function Cart() {
       }
     });
 
-    if(resp.ok && resp.status === 200) {
+    if (resp.ok && resp.status === 200) {
       setCleared(true);
       setCart([]);
     }
     const data = await resp.json();
     console.log(data);
-    
+
   }
-  
+
   return (
     <>
       <Header />

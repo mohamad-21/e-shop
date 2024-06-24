@@ -13,13 +13,13 @@ import Pagination from "../components/Pagination"
 import useAddCart from "../hooks/useAddCart"
 import SuccessAlert from "../components/SuccessAlert"
 
-const search_API = 'https://electroshop.liara.run/api/products/search/';
+const search_API = 'https://mohamad21.ir/electroshop/api/products/search/';
 
 function Shop() {
 
   const { search } = useLocation();
   const searchTerm = new URLSearchParams(search).get('q');
-  if(!searchTerm) return <NotFound />
+  if (!searchTerm) return <NotFound />
 
   const [products, setProducts] = useState([]);
   const [productsByPage, setProductsByPage] = useState([]);
@@ -31,27 +31,27 @@ function Shop() {
   useEffect(() => {
     fetchSearch();
   }, [search]);
-  
+
   async function fetchSearch() {
     setLoading(true);
     setProducts([]);
     try {
       const resp = await fetch(search_API + searchTerm);
-      if(resp.status === 404 || !resp.ok) {
+      if (resp.status === 404 || !resp.ok) {
         setResultText(`oops... no results found for \"${searchTerm}\"`);
         return;
       }
       const data = await resp.json();
       setProducts(data);
       setResultText(`Search Results for \"${searchTerm}\"`);
-    } catch(err) {
+    } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   }
 
-  if(error) {
+  if (error) {
     return <p className="p-2">{error}</p>;
   }
 
@@ -67,13 +67,13 @@ function Shop() {
               {productsByPage && productsByPage.map((pro, idx) => {
                 const proDelay = (idx + 1) / 3;
                 return (
-                  <motion.div 
+                  <motion.div
                     initial={{
                       opacity: 0,
                       y: 50
                     }}
                     animate={{
-                      opacity:1,
+                      opacity: 1,
                       y: 1
                     }}
                     transition={{

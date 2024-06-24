@@ -13,7 +13,7 @@ import CartItem from "../components/ProductCard/CartItem";
 import SuccessAlert from "../components/SuccessAlert";
 import Title from "../components/Title";
 
-const checkout_api = 'https://electroshop.liara.run/api/checkout';
+const checkout_api = 'https://mohamad21.ir/electroshop/api/checkout';
 const options = [
   { value: 'united-states', label: 'United states' },
   { value: 'germany', label: 'Germany' },
@@ -34,10 +34,10 @@ function Checkout() {
   const [showSuccess, setShowSuccess] = useState(false);
   const user = useContext(User);
   const { getCart, cart } = useContext(AppContext);
-  
+
   useEffect(() => {
 
-    if(number.trim() && region.trim() && address.trim()) {
+    if (number.trim() && region.trim() && address.trim()) {
       return setSubmitDisabled(false);
     }
     setSubmitDisabled(true);
@@ -49,7 +49,7 @@ function Checkout() {
     e.preventDefault();
     setError('');
 
-    if(!number.trim() || !region.trim() || !address.trim()) {
+    if (!number.trim() || !region.trim() || !address.trim()) {
       setError('all fields is required');
       document.documentElement.scrollTop = 0;
       return;
@@ -60,7 +60,7 @@ function Checkout() {
       region,
       address,
     }
-    
+
     const resp = await fetch(checkout_api, {
       method: "POST",
       headers: {
@@ -72,7 +72,7 @@ function Checkout() {
     const message = await resp.json();
     console.log(message);
 
-    if(resp.ok && resp.status === 200) {
+    if (resp.ok && resp.status === 200) {
       getCart();
       clearForm();
       setShowSuccess(true);
@@ -144,7 +144,7 @@ function Checkout() {
               <div className="flex flex-col">
                 <Label value="address" htmlFor="address" />
                 <Textarea
-                  name="address" 
+                  name="address"
                   value={address}
                   setValue={setAddress}
                 />

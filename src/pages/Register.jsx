@@ -4,7 +4,7 @@ import Label from "../components/Form/Label";
 import { Link, Navigate } from "react-router-dom";
 import Submit from "../components/Form/Submit";
 
-const register_API = 'https://electroshop.liara.run/api/auth/register';
+const register_API = 'https://mohamad21.ir/electroshop/api/auth/register';
 
 function Register() {
 
@@ -19,7 +19,7 @@ function Register() {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    if(email.trim() && password.trim()) {
+    if (email.trim() && password.trim()) {
       setSubmitDisabled(false);
     } else setSubmitDisabled(true);
   }, [email, password])
@@ -33,14 +33,14 @@ function Register() {
     setLoginError(null);
 
     let validation = true;
-    
+
     const emailPattern = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$/;
 
-    if(!emailPattern.test(email)) {
+    if (!emailPattern.test(email)) {
       setEmailError('provide an valid email')
       validation = false;
     }
-    if(!validation) return;
+    if (!validation) return;
 
     const loginData = {
       name,
@@ -60,18 +60,18 @@ function Register() {
 
       const data = await resp.json();
 
-      if(!resp.ok) {
+      if (!resp.ok) {
         throw new Error(data.message ?? `an error occurred in login process with status code: ${resp.code}`);
       }
       setSuccess(true);
-    } catch(err) {
+    } catch (err) {
       setLoginError(err.message);
     }
 
 
   }
 
-  if(success) {
+  if (success) {
     return <Navigate to='/login' />
   }
 
@@ -86,7 +86,7 @@ function Register() {
           {loginError && <p className="text-red-500 mt-2 text-center">{loginError}</p>}
           <div className="flex item-center gap-6">
             <div className="flex flex-col relative">
-              <Label 
+              <Label
                 value="name"
                 error={loginError}
                 htmlFor="name"
@@ -100,7 +100,7 @@ function Register() {
               />
             </div>
             <div className="flex flex-1 flex-col relative">
-              <Label 
+              <Label
                 value="Email"
                 error={emailError || loginError}
                 htmlFor="email"
@@ -116,7 +116,7 @@ function Register() {
             </div>
           </div>
           <div className="flex flex-col relative">
-            <Label 
+            <Label
               value="Password"
               htmlFor="password"
               error={loginError}
@@ -130,7 +130,7 @@ function Register() {
             />
           </div>
           <div className="flex flex-col relative">
-            <Label 
+            <Label
               value="Confirm password"
               htmlFor="repassword"
               error={loginError}

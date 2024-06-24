@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { RiShoppingCartFill } from "react-icons/ri";
 import RatingBox from "./RatingBox";
 
-const image_API = 'https://electroshop.liara.run/assets/products/';
+const image_API = 'https://mohamad21.ir/electroshop/assets/products/';
 
-function Single({id, title, image, body, price, avg_rating, addToCart}) {
+function Single({ id, title, image, body, price, avg_rating, addToCart }) {
   return (
     <>
       <div className="text-darkblue relative overflow-hidden group max-w-md mx-auto pb-44">
@@ -23,12 +23,12 @@ function Single({id, title, image, body, price, avg_rating, addToCart}) {
           </div>
         </div>
       </div>
-      <motion.div animate={{ bottom:0 }} className="fixed -bottom-full left-0 h-24 flex items-center md:justify-around justify-between px-6 gap-12 w-full bg-darkblue text-white">
+      <motion.div animate={{ bottom: 0 }} className="fixed -bottom-full left-0 h-24 flex items-center md:justify-around justify-between px-6 gap-12 w-full bg-darkblue text-white">
         <div className="flex items-center gap-3 rounded-md">
           <img src={image_API + image} alt={title} className="block max-[400px]:hidden w-10 h-10" />
           <h1 className="">{title}</h1>
         </div>
-        <button className="bg-blue-500 text-white py-2.5 w-full max-w-[130px] rounded-md hover:opacity-80 transition duration-200 focus:ring-2 flex items-center justify-center gap-1.5"  onClick={() => addToCart(id, 1)}><RiShoppingCartFill size={20} /> Add to cart</button>
+        <button className="bg-blue-500 text-white py-2.5 w-full max-w-[130px] rounded-md hover:opacity-80 transition duration-200 focus:ring-2 flex items-center justify-center gap-1.5" onClick={() => addToCart(id, 1)}><RiShoppingCartFill size={20} /> Add to cart</button>
       </motion.div>
     </>
   )

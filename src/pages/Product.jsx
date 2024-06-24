@@ -7,7 +7,7 @@ import Container from '../components/Container'
 import useAddCart from "../hooks/useAddCart"
 import SuccessAlert from "../components/SuccessAlert"
 
-const single_API = 'https://electroshop.liara.run/api/product/';
+const single_API = 'https://mohamad21.ir/electroshop/api/product/';
 
 function Product() {
 
@@ -20,24 +20,24 @@ function Product() {
   useEffect(() => {
     fetchData(single_API + id);
   }, []);
-  
+
   async function fetchData(URL) {
     setLoading(true);
     try {
       const resp = await fetch(URL);
       const data = await resp.json();
       setProduct(data);
-    } catch(err) {
+    } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   }
 
-  if(error) {
+  if (error) {
     return <p className="p-2">{error}</p>;
   }
-  
+
   return (
     <>
       {loading && <Loading />}

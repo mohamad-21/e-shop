@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import AppContext from "./AppContext";
 import User from "./User";
 
-const getMe_API = 'https://electroshop.liara.run/api/auth/getMe';
-const getCart_API = 'https://electroshop.liara.run/api/cart/get';
+const getMe_API = 'https://mohamad21.ir/electroshop/api/auth/getMe';
+const getCart_API = 'https://mohamad21.ir/electroshop/api/cart/get';
 const cartInit = [];
 
-function ContextContainer({children}) {
+function ContextContainer({ children }) {
 
   const [showSidebar, setShowSidebar] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
@@ -19,22 +19,22 @@ function ContextContainer({children}) {
   useEffect(() => {
     checkToken();
   }, []);
-  
+
   useEffect(() => {
     loggedIn && getCart();
   }, [loggedIn]);
 
   async function checkToken() {
     const token = localStorage.getItem('token');
-    if(!token) return;
+    if (!token) return;
 
     const resp = await fetch(getMe_API, {
       headers: {
-        'Authorization': `Bearer ${token}`  
+        'Authorization': `Bearer ${token}`
       }
     });
 
-    if(!resp.ok) return;
+    if (!resp.ok) return;
 
     const data = await resp.json();
     login(data);
@@ -52,7 +52,7 @@ function ContextContainer({children}) {
         'total': total
       })
     });
-    if(resp.ok) {
+    if (resp.ok) {
       getCart();
       setShowModal(true);
     }
@@ -61,15 +61,15 @@ function ContextContainer({children}) {
   async function getCart() {
     const resp = await fetch(getCart_API, {
       headers: {
-        'Authorization': `Bearer ${info.token}`  
+        'Authorization': `Bearer ${info.token}`
       }
     });
 
-    if(!resp.ok) return;
+    if (!resp.ok) return;
 
-    if(resp.status === 204) return setCart([]);
+    if (resp.status === 204) return setCart([]);
 
-    if(resp.status === 200) {
+    if (resp.status === 200) {
       const data = await resp.json();
       data?.length && setCart(data);
     }
@@ -93,34 +93,34 @@ function ContextContainer({children}) {
     discount = price - ((price * discount) / 100);
     return discount.toFixed(2);
   }
-  
+
   return (
-      <AppContext.Provider value={{
-        showSidebar,
-        setShowSidebar,
-        showOverlay,
-        setShowOverlay,
-        cart,
-        setCart,
-        showSearchModal,
-        setShowSearchModal,
-        addToCart,
-        getCart,
-        message,
-        setMessage,
-        calculateDiscount
+    <AppContext.Provider value={{
+      showSidebar,
+      setShowSidebar,
+      showOverlay,
+      setShowOverlay,
+      cart,
+      setCart,
+      showSearchModal,
+      setShowSearchModal,
+      addToCart,
+      getCart,
+      message,
+      setMessage,
+      calculateDiscount
+    }}>
+      <User.Provider value={{
+        loggedIn,
+        setLoggedIn,
+        ...info,
+        setInfo,
+        login,
+        logout
       }}>
-        <User.Provider value={{
-          loggedIn,
-          setLoggedIn,
-          ...info,
-          setInfo,
-          login,
-          logout
-        }}>
-          {children}
-        </User.Provider>
-      </AppContext.Provider>
+        {children}
+      </User.Provider>
+    </AppContext.Provider>
   )
 
 }

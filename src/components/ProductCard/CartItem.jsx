@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { MdClose } from "react-icons/md";
 
-const image_API = 'https://electroshop.liara.run/assets/products/';
+const image_API = 'https://mohamad21.ir/electroshop/assets/products/';
 
-function CartItem({ id, title, image, price, total, product_id, deleteItem, removable=true}) {
+function CartItem({ id, title, image, price, total, product_id, deleteItem, removable = true }) {
   return (
     <div className="flex items-start max-w-md gap-4 bg-darkblue text-white py-7 px-4 rounded-md relative">
       <Link to={`/product/${product_id}`} className="shrink-0">
@@ -15,7 +15,7 @@ function CartItem({ id, title, image, price, total, product_id, deleteItem, remo
             <Link to={`/product/${product_id}`} className="hover:text-lightblue font-medium inline">
               {title}
             </Link>
-            <span className="shrink-0 ml-1 inline"><MdClose style={{display:'inline'}} /> <b>{total}</b></span> 
+            <span className="shrink-0 ml-1 inline"><MdClose style={{ display: 'inline' }} /> <b>{total}</b></span>
           </h2>
         </div>
         <div className="flex gap-2.5 text-xs">

@@ -10,7 +10,7 @@ import Pagination from "../components/Pagination"
 import useAddCart from "../hooks/useAddCart"
 import SuccessAlert from "../components/SuccessAlert"
 
-const products_API = 'https://electroshop.liara.run/api/products';
+const products_API = 'https://mohamad21.ir/electroshop/api/products';
 
 function Shop() {
 
@@ -23,7 +23,7 @@ function Shop() {
   useEffect(() => {
     fetchData(products_API);
   }, []);
-  
+
   async function fetchData(URL) {
     setLoading(true);
     try {
@@ -31,14 +31,14 @@ function Shop() {
       const data = await resp.json();
       setProducts(data);
       console.log(data)
-    } catch(err) {
+    } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   }
 
-  if(error) {
+  if (error) {
     return <p className="p-2">{error}</p>;
   }
 

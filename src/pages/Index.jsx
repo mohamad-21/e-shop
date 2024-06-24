@@ -12,7 +12,7 @@ import Hero2 from "../components/Hero/Hero2"
 import useAddCart from "../hooks/useAddCart"
 import SuccessAlert from "../components/SuccessAlert"
 
-const products_API = 'https://electroshop.liara.run/api/products/limited';
+const products_API = 'https://mohamad21.ir/electroshop/api/products/limited';
 
 function Index() {
 
@@ -24,24 +24,24 @@ function Index() {
   useEffect(() => {
     fetchData(products_API);
   }, []);
-  
+
   async function fetchData(URL) {
     setLoading(true);
     try {
       const resp = await fetch(URL);
       const data = await resp.json();
-      if(!resp.ok) {
+      if (!resp.ok) {
         throw new Error(data.message || resp.text);
       }
       setProducts(data);
-    } catch(err) {
+    } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   }
 
-  if(error) {
+  if (error) {
     return <p className="p-2">{error}</p>;
   }
 

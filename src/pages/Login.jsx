@@ -9,7 +9,7 @@ import User from "../contexts/User";
 import { Link, useNavigate } from "react-router-dom";
 import Submit from "../components/Form/Submit";
 
-const login_API = 'https://electroshop.liara.run/api/auth/login';
+const login_API = 'https://mohamad21.ir/electroshop/api/auth/login';
 
 function Login() {
 
@@ -23,7 +23,7 @@ function Login() {
   const redirect = useNavigate();
 
   useEffect(() => {
-    if(email.trim() && password.trim()) {
+    if (email.trim() && password.trim()) {
       setSubmitDisabled(false);
     } else setSubmitDisabled(true);
   }, [email, password])
@@ -37,14 +37,14 @@ function Login() {
     setLoginError(null);
 
     let validation = true;
-    
+
     const emailPattern = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$/;
 
-    if(!emailPattern.test(email)) {
+    if (!emailPattern.test(email)) {
       setEmailError('provide an valid email')
       validation = false;
     }
-    if(!validation) return;
+    if (!validation) return;
 
     const loginData = {
       email,
@@ -62,12 +62,12 @@ function Login() {
 
       const data = await resp.json();
 
-      if(!resp.ok) {
+      if (!resp.ok) {
         throw new Error(data.message ?? `an error occurred in login process with status code: ${resp.code}`);
       }
       user.login(data);
       setSuccess(true);
-    } catch(err) {
+    } catch (err) {
       setLoginError(err.message);
       console.log(err)
     }
@@ -85,7 +85,7 @@ function Login() {
           </div>
           {loginError && <p className="text-red-500 mt-2 text-center">{loginError}</p>}
           <div className="flex flex-col relative">
-            <Label 
+            <Label
               value="Email"
               error={emailError || loginError}
               htmlFor="email"
@@ -100,7 +100,7 @@ function Login() {
             {emailError && <p className="text-sm text-red-400 mt-2">{emailError}</p>}
           </div>
           <div className="flex flex-col relative">
-            <Label 
+            <Label
               value="Password"
               htmlFor="password"
               error={loginError}

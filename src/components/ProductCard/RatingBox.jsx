@@ -4,10 +4,10 @@ import { FaRegStar } from "react-icons/fa";
 import User from '../../contexts/User';
 import AppContext from "../../contexts/AppContext";
 
-const rating_api = `https://electroshop.liara.run/api/product/rate`;
+const rating_api = `https://mohamad21.ir/electroshop/product/rate`;
 
-function RatingBox({product_id, rating}) {
-  
+function RatingBox({ product_id, rating }) {
+
   const [proRating, setProRating] = useState(rating);
   const { setMessage } = useContext(AppContext);
   const user = useContext(User);
@@ -15,7 +15,7 @@ function RatingBox({product_id, rating}) {
   let ratings = Array.from(Array(5).keys());
 
   async function handleRate(rate) {
-    if(!user.loggedIn) return setMessage('you\'re not authorized');
+    if (!user.loggedIn) return setMessage('you\'re not authorized');
     const resp = await fetch(rating_api, {
       method: "POST",
       headers: {
@@ -29,8 +29,8 @@ function RatingBox({product_id, rating}) {
       })
     });
     const data = await resp.json();
-    
-    if(resp.ok && resp.status === 200) {
+
+    if (resp.ok && resp.status === 200) {
       setMessage(data.message);
       return setProRating(rate);
     }

@@ -7,9 +7,9 @@ import { useContext } from "react";
 import AnimatedCard from '../AnimatedCard';
 import AppContext from "../../contexts/AppContext";
 
-const image_API = 'https://electroshop.liara.run/assets/products/';
+const image_API = 'https://mohamad21.ir/electroshop/assets/products/';
 
-function Product({id, title, image, price, avg_rating, addToCart, discount}) {
+function Product({ id, title, image, price, avg_rating, addToCart, discount }) {
 
   const { calculateDiscount } = useContext(AppContext);
 
