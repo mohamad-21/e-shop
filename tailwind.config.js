@@ -10,6 +10,9 @@ export default {
         'darkblue': '#14171a',
         'lightblue': '#356db6'
       },
+      fontFamily: {
+        Inter: ['Inter', 'sans-serif']
+      }
     },
   },
   plugins: [],

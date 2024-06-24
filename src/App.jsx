@@ -15,11 +15,11 @@ import Alert from './components/Alert';
 import Register from "./pages/Register"
 
 function App() {
-  
+
   const { showOverlay, message, setMessage } = useContext(AppContext);
 
   return (
-    <div className="min-h-screen flex flex-col text-darkblue">
+    <div className="min-h-screen font-Inter flex flex-col text-darkblue">
       {showOverlay && <Overlay />}
       {message && <Alert open={message} setOpen={setMessage}>{message}</Alert>}
       <Routes>
